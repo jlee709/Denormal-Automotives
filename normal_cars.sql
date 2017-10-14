@@ -1,7 +1,11 @@
 --sql start NormalCars
+--creating db
+DROP DATABASE IF EXISTS normal_cars;
+DROP USER IF EXISTS normal_user;
 
-DROP DATABASE IF EXISTS indexed_cars;
-DROP USER IF EXISTS indexed_cars_user;
+CREATE USER normal_user;
 
-CREATE USER indexed_cars_user;
-CREATE DATABASE indexed_cars;
+CREATE DATABASE normal_cars WITH OWNER normal_user;
+
+\c normal_cars normal_user;
+\i scripts/denormal_data.sql;
